@@ -1,1 +1,40 @@
-<p>user works!</p>
+<app-navbar />
+
+<p-table 
+  styleClass="mt-4"
+  [value]="userList" 
+  [paginator]="true" 
+  [rows]="5" 
+  [showCurrentPageReport]="true"
+  [tableStyle]="{ 'min-width': '50rem' }"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
+  [rowsPerPageOptions]="[5, 10, 20]">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>#</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Status</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-data>
+    <tr>
+      <td>{{ data.idUser }}</td>
+      <td>{{ data.username }}</td>
+      <td>{{ data.email }}</td>
+      <td>
+        @if (data.status == 1) {
+          Disponible
+        } @else {
+          Off
+        }
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="paginatorleft">
+    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+  </ng-template>
+  <ng-template pTemplate="paginatorright">
+    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+  </ng-template>
+</p-table>

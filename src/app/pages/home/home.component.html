@@ -1,12 +1,59 @@
-<p>home works!</p>
-<button 
-    pButton 
-    pRipple 
-    label="Submit" 
-    class="p-button-success"></button>
+<app-navbar />
 
 @if (identicator) {
-    <p>Is valid</p>
+  <p>Is valid</p>
 } @else {
-    <p>else valid</p>
+  <p>else valid</p>
 }
+
+<p> {{ formGroup.value | json }} </p>
+<p> Status: {{  formGroup.status }} </p>
+
+
+<div class="grid">
+  <div class="sm:col-12 md:col-6 lg:col-4 md:col-offset-3 lg:col-offset-4">
+    <p-panel header="Login">
+      <div class="grid">
+        <div class="col-10 col-offset-1">
+          <!-- Form -->
+          <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+            <!-- User -->
+            <div class="block mb-4">
+              <div class="flex flex-column gap-2">
+                  <label for="username">Usuario</label>
+                  <input 
+                    pInputText 
+                    id="username" 
+                    type="text"
+                    formControlName="username"
+                    placeholder="Ingresa tu usuario" />
+              </div>
+            </div>
+            <!-- Password -->
+            <div class="block mb-4">
+              <div class="flex flex-column gap-2">
+                  <label for="password">Contraseña</label>
+                  <input 
+                    pInputText 
+                    id="password" 
+                    type="password"
+                    formControlName="password"
+                    placeholder="Ingresa tu contraseña" />
+              </div>
+            </div>
+            <!-- Button -->
+            <div class="block mb-4">
+              <p-button 
+                type="submit"
+                styleClass="width-100"
+                severity="success"
+                label="Ingresar"
+                icon="pi pi-sign-in">
+                </p-button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </p-panel>
+  </div>
+</div>
