@@ -1,9 +1,12 @@
+import { Role } from "./Role";
+
 export class User {
-    idUser?: Number;
-    username?: String;
-    firstName?: String;
-    lastName?: String;
-    password?: String;
-    email?: String;
-    status?: Number;
+    idUser?: number;
+    username?: string;
+    firstName?: string;
+    lastName?: string;
+    password?: string;
+    email?: string;
+    status?: number;
+    role?: Role;
 }

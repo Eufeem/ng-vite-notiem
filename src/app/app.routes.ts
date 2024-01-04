@@ -10,7 +10,7 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent)
     }, {
         path: 'user',
-        loadComponent: () => import('./pages/user/user.component').then(m => m.UserComponent)
+        loadComponent: () => import('./pages/user/user-table/user-table.component').then(m => m.UserTableComponent)
     }, {
         path: 'role',
         loadComponent: () => import('./pages/role/role.component').then(m => m.RoleComponent)

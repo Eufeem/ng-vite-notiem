@@ -1,0 +1,67 @@
+<app-navbar />
+
+
+<div class="grid mt-5">
+  <div class="sm:col-12 md:col-10 lg:col-10 md:col-offset-1 lg:col-offset-1">
+    <p-panel header="Gestión Usuarios">
+
+      <div class="grid">
+        <div class="col-3">
+          <div class="block mb-2">
+            <p-button 
+              styleClass="width-100"
+              severity="primary"
+              label="Agregar"
+              size="small"
+              icon="pi pi-sign-in">
+            </p-button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <p-table 
+        [value]="userList" 
+        styleClass="text-center"
+        [paginator]="true" 
+        [rows]="5" 
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[5, 10, 20]">
+        <ng-template pTemplate="header">
+          <tr>
+            @for (column of columns; track $index) {
+            <th id="$index">{{column}}</th>
+            }
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+          <tr>
+            <td>{{user.idUser}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>
+              @if (user.status) {
+                <p-badge value="Activo" severity="success"></p-badge>
+              } @else {
+                <p-badge value="Inactivo" severity="info"></p-badge>
+              }
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+          <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+          <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+      </p-table>
+      </p-panel>
+  </div>
+</div>
+
+
+<app-user-form />
