@@ -27,13 +27,15 @@ import { PanelModule } from 'primeng/panel';
   ],
   providers: [UserService],
   templateUrl: './user-table.component.html',
-  styleUrl: './user-table.component.css'
+  styleUrl: './user-table.component.css',
 })
 export class UserTableComponent implements OnInit {
 
+  // Variables
   columns: string[] = ["#", "Username", "Nombre", "Apellido", "Email", "Estatus"]
   userService = inject(UserService);
   userList: User[] = []
+  showForm: boolean = false;
 
   ngOnInit(): void {
     this.userService.getAll().subscribe({
@@ -46,5 +48,9 @@ export class UserTableComponent implements OnInit {
       }
     })
   }
+
+  showFormEvent() {
+    this.showForm = !this.showForm;
+  }  
 
 }

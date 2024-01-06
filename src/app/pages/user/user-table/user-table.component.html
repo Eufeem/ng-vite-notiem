@@ -1,7 +1,7 @@
 <app-navbar />
 
-
-<div class="grid mt-5">
+<div class="grid mt-5 fadein animation-duration-500" 
+  [ngClass]="{'hidden': showForm}">
   <div class="sm:col-12 md:col-10 lg:col-10 md:col-offset-1 lg:col-offset-1">
     <p-panel header="Gestión Usuarios">
 
@@ -13,7 +13,8 @@
               severity="primary"
               label="Agregar"
               size="small"
-              icon="pi pi-sign-in">
+              icon="pi pi-plus"
+              (onClick)="showFormEvent()">
             </p-button>
           </div>
         </div>
@@ -64,4 +65,6 @@
 </div>
 
 
-<app-user-form />
+<app-user-form 
+  [ngClass]="{'hidden': showForm === false}" 
+  [(form)]="showForm" />

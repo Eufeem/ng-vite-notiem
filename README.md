@@ -12,4 +12,6 @@
 ## Comands
 - Run dev: ng s -o
 - Build: ng build || npm run build
+- Build environment: ng build --configuration staging || development 
+- Environments: ng generate environments
 
